@@ -71,6 +71,10 @@
 
 	</target>
 
+	<target name="run">
+		<java jar="Application.jar" fork="true"/>
+	</target>
+
 	<target name="clean" description="Delete .build directory">
 
 		<echo>Delete .build directory</echo>
