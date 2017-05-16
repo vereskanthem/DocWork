@@ -32,6 +32,7 @@ public class AppGui extends JFrame  {
     private JTextField textFieldZipOfModel               = new JTextField(null);
 
     private JTextField textFieldDateSignedOfModel        = new JTextField(null);
+    private JTextField textFieldDateOfBirthOfModel       = new JTextField(null);
 
     private JTextField textFieldNameOfWitness            = new JTextField(null);
     private JTextField textFieldDateSignedOfWitness      = new JTextField(null);
@@ -52,11 +53,12 @@ public class AppGui extends JFrame  {
 
     private JLabel textFieldNameOfModelLabel;
     private JLabel textFieldFixedPhoneOfModelLabel;
-    private JLabel textFieldEmailOfModelLabel;
+
     private JLabel textFieldCountryOfModelLabel;
     private JLabel textFieldCityOfModelLabel;  
     private JLabel textFieldAddressOfModelLabel;
     private JLabel textFieldZipOfModelLabel;
+    private JLabel textFieldDateOfBirthOfModelLabel;
 
     private JLabel textFieldNameOfWitnessLabel;
 
@@ -64,7 +66,12 @@ public class AppGui extends JFrame  {
     private JLabel textFieldDateSignedOfModelLabel;
     private JLabel textFieldDateSignedOfWitnessLabel;
 
-    private JButton buttonGenFiles;
+    private JLabel signatureOfPhotographerLabel;
+    private JLabel signatureOfModelLabel;
+    private JLabel signatureOfWitnessLabel;
+
+    private JButton buttonGenFilesOld;
+    private JButton buttonGenFilesYoung;
 
     private JCheckBox yearsTrigger;
 
@@ -91,19 +98,24 @@ public class AppGui extends JFrame  {
         textFieldAddressOfPhotographerLabel     = new JLabel("Address of Photographer: ");
         textFieldZipOfPhotographerLabel         = new JLabel("Zip of Photographer: ");
         textFieldShootDateLabel                 = new JLabel("Shoot Date: ");
-        textFieldNameOfModelLabel               = new JLabel("Name of Model: ");
-        textFieldFixedPhoneOfModelLabel         = new JLabel("Phone of Model: ");
-        textFieldEmailOfModelLabel              = new JLabel("Email of Model: ");
+        textFieldNameOfModelLabel               = new JLabel("Name of Model: generated automatically from file");
+        textFieldDateOfBirthOfModelLabel        = new JLabel("Model's Date of Birth: generated automatically rand date");
+        textFieldFixedPhoneOfModelLabel         = new JLabel("Phone of Model: generated automatically from file");
         textFieldCountryOfModelLabel            = new JLabel("Country of Model: ");
         textFieldCityOfModelLabel               = new JLabel("City of Model: ");
-        textFieldAddressOfModelLabel            = new JLabel("Address of Model: ");
+        textFieldAddressOfModelLabel            = new JLabel("Address of Model: generated automatically from file + rand number");
         textFieldZipOfModelLabel                = new JLabel("Zip of Model: ");
         textFieldDateSignedOfPhotographerLabel  = new JLabel("Date Signed of Photographer: ");
         textFieldDateSignedOfModelLabel         = new JLabel("Date Signed of Model: ");
         textFieldDateSignedOfWitnessLabel       = new JLabel("Date Signed of Witness: ");
         textFieldNameOfWitnessLabel             = new JLabel("Name of Witness: ");
 
-        buttonGenFiles = new JButton("GenFiles");
+        signatureOfPhotographerLabel            = new JLabel("Signature of Photographer: must be button");
+        signatureOfModelLabel                   = new JLabel("Signature of Model: must be button");
+        signatureOfWitnessLabel                 = new JLabel("Signature of Witness: must be button");
+
+        buttonGenFilesOld = new JButton("GenFiles (Old)");
+        buttonGenFilesYoung = new JButton("GenFiles (Young)");
 
         constraints.fill = GridBagConstraints.WEST;
 
@@ -122,7 +134,8 @@ public class AppGui extends JFrame  {
 
         Box buttonsBox = Box.createHorizontalBox();
 
-        buttonsBox.add(buttonGenFiles, constraints);
+        buttonsBox.add(buttonGenFilesOld, constraints);
+        buttonsBox.add(buttonGenFilesYoung, constraints);
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
@@ -183,20 +196,20 @@ public class AppGui extends JFrame  {
         Box nameOfModelBox = Box.createHorizontalBox();
 
         nameOfModelBox.add(textFieldNameOfModelLabel,constraints);
-        nameOfModelBox.add(textFieldNameOfModel,constraints);
+        // nameOfModelBox.add(textFieldNameOfModel,constraints);
         nameOfModelBox.add(Box.createVerticalStrut(10));
+
+        Box dateOfBirthOfModelBox = Box.createHorizontalBox();
+        
+        dateOfBirthOfModelBox.add(textFieldDateOfBirthOfModelLabel,constraints);
+        // dateOfBirthOfModel.add(textFieldEmailOfModel,constraints);
+        dateOfBirthOfModelBox.add(Box.createVerticalStrut(10));
 
         Box fixedPhoneOfModelBox = Box.createHorizontalBox();
 
         fixedPhoneOfModelBox.add(textFieldFixedPhoneOfModelLabel,constraints);
-        fixedPhoneOfModelBox.add(textFieldFixedPhoneOfModel,constraints);
+        // fixedPhoneOfModelBox.add(textFieldFixedPhoneOfModel,constraints);
         fixedPhoneOfModelBox.add(Box.createVerticalStrut(10));
-
-        Box emailOfModelBox = Box.createHorizontalBox();
-        
-        emailOfModelBox.add(textFieldEmailOfModelLabel,constraints);
-        emailOfModelBox.add(textFieldEmailOfModel,constraints);
-        emailOfModelBox.add(Box.createVerticalStrut(10));
 
         Box countryOfModelBox = Box.createHorizontalBox();
 
@@ -213,7 +226,7 @@ public class AppGui extends JFrame  {
         Box addressOfModelBox = Box.createHorizontalBox();
 
         addressOfModelBox.add(textFieldAddressOfModelLabel,constraints);
-        addressOfModelBox.add(textFieldAddressOfModel,constraints);
+        // addressOfModelBox.add(textFieldAddressOfModel,constraints);
         addressOfModelBox.add(Box.createVerticalStrut(10));
 
         Box zipOfModelBox = Box.createHorizontalBox();
@@ -244,83 +257,99 @@ public class AppGui extends JFrame  {
 
         dateSignedOfWitnessBox.add(textFieldDateSignedOfWitnessLabel,constraints);
         dateSignedOfWitnessBox.add(textFieldDateSignedOfWitness,constraints);
-        dateSignedOfWitnessBox.add(Box.createVerticalStrut(10));
+        dateSignedOfWitnessBox.add(Box.createVerticalStrut(40));
 
+        Box signatureOfPhotographerBox = Box.createHorizontalBox();
 
-        // textFieldNameOfPhotographerLabel       
-        // textFieldFixedPhoneOfPhotographerLabel 
-        // textFieldEmailOfPhotographerLabel      
-        // textFieldCountryOfPhotographerLabel    
-        // textFieldCityOfPhotographerLabel       
-        // textFieldAddressOfPhotographerLabel    
-        // textFieldZipOfPhotographerLabel        
-        // textFieldShootDateLabel                
-        // textFieldNameOfModelLabel              
-        // textFieldFixedPhoneOfModelLabel        
-        // textFieldEmailOfModelLabel             
-        // textFieldCountryOfModelLabel           
-        // textFieldCityOfModelLabel              
-        // textFieldAddressOfModelLabel           
-        // textFieldZipOfModelLabel               
-        // textFieldDateSignedOfPhotographerLabel 
-        // textFieldDateSignedOfModelLabel        
-        // textFieldDateSignedOfWitnessLabel      
+        signatureOfPhotographerBox.add(signatureOfPhotographerLabel,constraints);
+        // signatureOfPhotographerBox.add(textFieldDateSignedOfWitness,constraints);
+        signatureOfPhotographerBox.add(Box.createVerticalStrut(10));
 
-        // Box shareLabelAndFieldsBox = Box.createHorizontalBox();
+        Box signatureOfModelBox = Box.createHorizontalBox();
+
+        signatureOfModelBox.add(signatureOfModelLabel,constraints);
+        // signatureOfPhotographerBox.add(textFieldDateSignedOfWitness,constraints);
+        signatureOfModelBox.add(Box.createVerticalStrut(10));
+
+        Box signatureOfWitnessBox = Box.createHorizontalBox();
+
+        signatureOfWitnessBox.add(signatureOfWitnessLabel,constraints);
+        // signatureOfPhotographerBox.add(textFieldDateSignedOfWitness,constraints);
+        signatureOfWitnessBox.add(Box.createVerticalStrut(10));
+
+        Box mainOldBox = Box.createVerticalBox();
+
+        mainOldBox.add(buttonsBox,constraints);
+        mainOldBox.add(Box.createHorizontalStrut(15));
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(nameOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(fixedPhoneOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(emailOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(countryOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(cityOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(addressOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(zipOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(shootDateBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(nameOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(dateOfBirthOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));;
+        mainOldBox.add(fixedPhoneOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(countryOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(cityOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(addressOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(zipOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(nameOfWitnessBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(40));
+        mainOldBox.add(dateSignedOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(dateSignedOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(dateSignedOfWitnessBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(signatureOfPhotographerBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(signatureOfModelBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+        mainOldBox.add(signatureOfWitnessBox,constraints);
+        mainOldBox.add(Box.createVerticalStrut(10));
+
+        // mainBox.add(fieldsPanel,constraints);
+        mainOldBox.add(Box.createHorizontalStrut(15));
+        mainOldBox.add(Box.createVerticalStrut(10));
+
+        Box mainYoungBox = Box.createVerticalBox();
+
+        JTabbedPane tabs = new JTabbedPane();
+
+        tabs.addTab("Old",   mainOldBox);
+        tabs.addTab("Young", mainYoungBox);
 
         Box mainBox = Box.createVerticalBox();
 
-        mainBox.add(buttonsBox,constraints);
-        mainBox.add(Box.createHorizontalStrut(15));
-        mainBox.add(Box.createVerticalStrut(10));
-        // mainBox.add(Box.createHorizontalGlue());
+        mainBox.add(buttonsBox);
+        mainBox.add(tabs);
 
-        mainBox.add(nameOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(fixedPhoneOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(emailOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(countryOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(cityOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(addressOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(zipOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(shootDateBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(nameOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(fixedPhoneOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(emailOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(countryOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(cityOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(addressOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(zipOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(nameOfWitnessBox,constraints);
-        mainBox.add(Box.createVerticalStrut(40));
-        mainBox.add(dateSignedOfPhotographerBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(dateSignedOfModelBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
-        mainBox.add(dateSignedOfWitnessBox,constraints);
-        mainBox.add(Box.createVerticalStrut(10));
+        tabs.setVisible(true);
 
-        // mainBox.add(fieldsPanel,constraints);
-        mainBox.add(Box.createHorizontalStrut(15));
-        mainBox.add(Box.createVerticalStrut(10));
+        // getContentPane().add(tabs);
 
         setContentPane(mainBox);
 
-        mainBox.setBorder(new EmptyBorder(10, 10, 10, 10));
+        mainOldBox.setBorder(new EmptyBorder(10, 10, 10, 10));
 
         pack();
 
@@ -339,6 +368,11 @@ public class AppGui extends JFrame  {
             public void run()   {
 
                 try {
+
+                    // TabbedPane tp = new TabbedPane();
+
+
+
 
                     JFrame jfrm = new AppGui();
 
