@@ -58,6 +58,8 @@ public class AppGui extends JFrame  {
     private JLabel textFieldAddressOfModelLabel;
     private JLabel textFieldZipOfModelLabel;
 
+    private JLabel textFieldNameOfWitnessLabel;
+
     private JLabel textFieldDateSignedOfPhotographerLabel;
     private JLabel textFieldDateSignedOfModelLabel;
     private JLabel textFieldDateSignedOfWitnessLabel;
@@ -99,6 +101,7 @@ public class AppGui extends JFrame  {
         textFieldDateSignedOfPhotographerLabel  = new JLabel("Date Signed of Photographer: ");
         textFieldDateSignedOfModelLabel         = new JLabel("Date Signed of Model: ");
         textFieldDateSignedOfWitnessLabel       = new JLabel("Date Signed of Witness: ");
+        textFieldNameOfWitnessLabel             = new JLabel("Name of Witness: ");
 
         buttonGenFiles = new JButton("GenFiles");
 
@@ -179,8 +182,8 @@ public class AppGui extends JFrame  {
 
         Box nameOfModelBox = Box.createHorizontalBox();
 
-        nameOfModelBox.add(textFieldZipOfModelLabel,constraints);
-        nameOfModelBox.add(textFieldZipOfModel,constraints);
+        nameOfModelBox.add(textFieldNameOfModelLabel,constraints);
+        nameOfModelBox.add(textFieldNameOfModel,constraints);
         nameOfModelBox.add(Box.createVerticalStrut(10));
 
         Box fixedPhoneOfModelBox = Box.createHorizontalBox();
@@ -219,6 +222,12 @@ public class AppGui extends JFrame  {
         zipOfModelBox.add(textFieldZipOfModel,constraints);
         zipOfModelBox.add(Box.createVerticalStrut(10));
 
+        Box nameOfWitnessBox = Box.createHorizontalBox();
+
+        nameOfWitnessBox.add(textFieldNameOfWitnessLabel,constraints);
+        nameOfWitnessBox.add(textFieldNameOfWitness,constraints);
+        nameOfWitnessBox.add(Box.createVerticalStrut(10));
+
         Box dateSignedOfPhotographerBox = Box.createHorizontalBox();
 
         dateSignedOfPhotographerBox.add(textFieldDateSignedOfPhotographerLabel,constraints);
@@ -236,6 +245,7 @@ public class AppGui extends JFrame  {
         dateSignedOfWitnessBox.add(textFieldDateSignedOfWitnessLabel,constraints);
         dateSignedOfWitnessBox.add(textFieldDateSignedOfWitness,constraints);
         dateSignedOfWitnessBox.add(Box.createVerticalStrut(10));
+
 
         // textFieldNameOfPhotographerLabel       
         // textFieldFixedPhoneOfPhotographerLabel 
@@ -295,6 +305,8 @@ public class AppGui extends JFrame  {
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(zipOfModelBox,constraints);
         mainBox.add(Box.createVerticalStrut(10));
+        mainBox.add(nameOfWitnessBox,constraints);
+        mainBox.add(Box.createVerticalStrut(40));
         mainBox.add(dateSignedOfPhotographerBox,constraints);
         mainBox.add(Box.createVerticalStrut(10));
         mainBox.add(dateSignedOfModelBox,constraints);
